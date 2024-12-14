@@ -1,13 +1,17 @@
 import mysql from "mysql2/promise";
 
-// const connection = await mysql.createConnection({
-//   host: process.env.HOST,
-//   user: process.env.USER,
-//   password: process.env.PASSWORD,
-//   database: process.env.DB_NAME,
-// });
+export const createDatabaseIfNotExists = async () => {
+  const connection = await mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "Bhavy@1164",
+  });
+  await connection.query(`CREATE DATABASE IF NOT EXISTS todo_app_db`);
+  console.log("Database checked/created.");
+  connection.end();
+};
 
-const getConnection = async () => {
+export const getConnection = async () => {
   const connection = await mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -17,5 +21,3 @@ const getConnection = async () => {
   console.log("Connected to the database.");
   return connection;
 };
-
-export default getConnection;
