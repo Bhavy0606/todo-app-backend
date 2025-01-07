@@ -7,6 +7,7 @@ dotenv.config();
 import { createDatabaseIfNotExists, getConnection } from "./db/db_connect.js";
 import UserRoutes from "./routes/user.route.js";
 import CategoriesRoutes from "./routes/categories.route.js";
+import ToDoRoutes from "./routes/todos.route.js";
 import authMiddleware from "./middlewares/auth.middleware.js";
 
 const app = express();
@@ -25,17 +26,8 @@ app.get("/", async (req, res) => {
 
 app.use("/api/user", UserRoutes);
 app.use("/api/categories", authMiddleware, CategoriesRoutes);
+app.use("/api/todos", authMiddleware, ToDoRoutes);
 
 app.listen(PORT, () => {
   console.log(`App is running at http://localhost:${PORT}`);
 });
-
-// const connection = await getConnection();
-// const query = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
-// connection.query(query, ["raj", "r@g.com", "123"], (err, results) => {
-//   if (err) {
-//     console.error("Error inserting data: " + err.stack);
-//     return res.status(500).send("Database error");
-//   }
-//   if (results) res.status(201).send(`User added with ID: `);
-// });

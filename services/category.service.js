@@ -20,6 +20,20 @@ const handleCreateCategory = async (categoryName, userId) => {
   }
 };
 
+const handleGetAllDefaultCategories = async () => {
+  try {
+    const connection = await getConnection();
+
+    const query = "SELECT * FROM default_categories";
+
+    const [rows] = await connection.query(query);
+
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const handleGetAllCategories = async (userId) => {
   try {
     const connection = await getConnection();
@@ -59,9 +73,30 @@ const handleDeleteCategory = async (id) => {
   if (rows.affectedRows > 0) return "SUCCESS";
 };
 
+const handleGetCategory = async (
+  category_id,
+  is_category_default = true,
+  user_id = null
+) => {
+  const connection = await getConnection();
+
+  if (is_category_default) {
+    const query = "SELECT * FROM default_categories WHERE id = ?";
+
+    const [rows] = await connection.query(query, [category_id]);
+    console.log(rows);
+  } else {
+    const query = "SELECT * FROM categories WHERE id = ? AND user_id = ?";
+
+    const [rows] = await connection.query(query, [category_id, user_id]);
+    console.log(rows);
+  }
+};
 export {
   handleCreateCategory,
   handleGetAllCategories,
   handleUpdateCategory,
   handleDeleteCategory,
+  handleGetAllDefaultCategories,
+  handleGetCategory,
 };

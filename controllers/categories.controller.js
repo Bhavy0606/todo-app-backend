@@ -3,6 +3,7 @@ import {
   handleGetAllCategories,
   handleUpdateCategory,
   handleDeleteCategory,
+  handleGetAllDefaultCategories,
 } from "../services/category.service.js";
 
 const createCategory = async (req, res) => {
@@ -21,13 +22,30 @@ const createCategory = async (req, res) => {
     });
 };
 
-const getCategory = async (req, res) => {
+const getAllCategories = async (req, res) => {
   const categories = await handleGetAllCategories(req.user.id);
   if (categories) {
     return res.status(200).json({
       success: true,
       message: "Categories fetched.",
       data: { categories },
+    });
+  } else {
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal Database error" });
+  }
+};
+const getAllDefaultCategories = async (req, res) => {
+
+  const defaultCategories = await handleGetAllDefaultCategories();
+  console.log(defaultCategories);
+
+  if (defaultCategories) {
+    return res.status(200).json({
+      success: true,
+      message: "Categories fetched.",
+      data: { defaultCategories },
     });
   } else {
     return res
@@ -71,4 +89,12 @@ const deleteCategory = async (req, res) => {
     });
 };
 
-export { createCategory, getCategory, updateCategory, deleteCategory };
+
+
+export {
+  createCategory,
+  getAllCategories,
+  updateCategory,
+  deleteCategory,
+  getAllDefaultCategories,
+};
