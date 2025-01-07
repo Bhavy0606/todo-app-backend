@@ -6,13 +6,17 @@ import {
   deleteCategory,
   getAllDefaultCategories,
 } from "../controllers/categories.controller.js";
+import { CategoriesRoutes } from "../enums/routes.enum.js";
 
 const router = express.Router();
 
-router.post("/create", createCategory);
-router.get("/get-all-categories", getAllCategories);
-router.get("/get-all-default-categories", getAllDefaultCategories);
-router.post("/update", updateCategory);
-router.delete("/delete", deleteCategory);
+router.post(CategoriesRoutes.CREATE_CATEGORY, createCategory);
+router.get(CategoriesRoutes.GET_ALL_CATEGORIES, getAllCategories);
+router.get(
+  CategoriesRoutes.GET_ALL_DEFAULT_CATEGORIES,
+  getAllDefaultCategories
+);
+router.post(CategoriesRoutes.UPDATE_CATEGORY, updateCategory);
+router.delete(CategoriesRoutes.DELETE_CATEGORY, deleteCategory);
 
 export default router;
