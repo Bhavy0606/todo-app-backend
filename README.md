@@ -28,8 +28,7 @@ This is a **Todo Application API** built with **Node.js** and **Express.js**. Th
 
 
 
-Here's the provided information formatted in markdown for the README.md:
-
+# Guide for API routes
 ## API Routes
 
 ### 1. Signup
@@ -39,11 +38,11 @@ Here's the provided information formatted in markdown for the README.md:
 - **Sample Body JSON**:
   ```json
   {
-    "first_name": "abhi",
-    "last_name": "Patel",
-    "email": "abhi@gmail.com",
-    "password": "123",
-    "confirm_password": "123"
+    "first_name": "abhi",   //enter first name
+    "last_name": "Patel",   //enter last name
+    "email": "abhi@gmail.com",   //enter user's email
+    "password": "123",   //enter password
+    "confirm_password": "123"   //enter password again to confirm
   }
 
 ### 2. Signin
@@ -53,11 +52,8 @@ Here's the provided information formatted in markdown for the README.md:
 - **Sample Body JSON**:
   ```json
   {
-    "first_name": "abhi",
-    "last_name": "Patel",
-    "email": "abhi@gmail.com",
-    "password": "123",
-    "confirm_password": "123"
+    "email":"jay@gmail.com",   //enter user's email
+    "password":"123"   //enter user's password
   }
 - **Sample Response**:
   ```json
@@ -74,7 +70,7 @@ Here's the provided information formatted in markdown for the README.md:
 - **Sample Body JSON**:
   ```json
   {
-    "name":"asdadad"
+    "name":"asdadad"   //enter a category name
   }
 - **Sample Response**:
   ```json
@@ -176,8 +172,7 @@ Here's the provided information formatted in markdown for the README.md:
   - Authorization: `Bearer <token>`
 - **Sample Body JSON**:
   ```json
-  {
-    }
+  {}
 - **Sample Response**:
   ```json
   {
@@ -251,8 +246,7 @@ Here's the provided information formatted in markdown for the README.md:
   - Authorization: `Bearer <token>`
 - **Sample Body JSON**:
   ```json
-  {
-  }
+  {}
 - **Sample Response**:
   ```json
   {
@@ -373,8 +367,7 @@ Here's the provided information formatted in markdown for the README.md:
   - Authorization: `Bearer <token>`
 - **Sample Body JSON**:
   ```json
-  {
-  }
+  {}
 - **Sample Response**:
   ```json
   {
@@ -458,19 +451,14 @@ Here's the provided information formatted in markdown for the README.md:
   - Authorization: `Bearer <token>`
 - **Sample Body JSON**:
   ```json
-  {
-   
-  }
-
+  {}
 - **Sample Response**:
   ```json
   {
     "success": true,
-    "message": "ToDo Updated successfully.",
+    "message": "ToDo Deleted successfully.",
     "data": {
         "toDo": {
-            "id": 13
+            "id": "9"
         }
-    }
-  
-
+    } 
